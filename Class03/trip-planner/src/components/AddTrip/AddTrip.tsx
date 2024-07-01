@@ -1,12 +1,13 @@
 import { useState, FormEvent } from "react";
+import { TripStatus } from "../../trip.data";
 
 interface Trip {
   id: number;
   title: string;
   destination: string;
-  budget: string;
+  budget: number;
   image: string;
-  status: string;
+  status: TripStatus;
 }
 
 interface AddTripProps {
@@ -25,9 +26,9 @@ function AddTrip({ addTrip }: AddTripProps) {
       id: Date.now(),
       title,
       destination,
-      budget,
+      budget: Number(budget),
       image,
-      status: "PLANNING",
+      status: TripStatus.PLANNING,
     };
     addTrip(newTrip);
     setTitle("");
