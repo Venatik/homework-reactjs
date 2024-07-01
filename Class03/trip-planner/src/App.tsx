@@ -53,3 +53,9 @@ function App() {
 }
 
 export default App;
+
+// //TODO - Type '(newTrip: Trip) => void' is not assignable to type '(trip: Trip) => void'.
+//   Types of parameters 'newTrip' and 'trip' are incompatible.
+//   Type 'Trip' is not assignable to type 'import("e:/SEDC/repos/homework-reactjs/Class03/trip-planner/src/trip.data").Trip'.
+//     Types of property 'status' are incompatible.
+//       Type 'string' is not assignable to type 'TripStatus'.
