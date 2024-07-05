@@ -1,0 +1,11 @@
+.addTripForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  gap: 10px;
+}
+
+.addTripForm button {
+  border: 1px solid black;
+  cursor: pointer;
+}
