@@ -20,6 +20,13 @@ function AddTrip({ addTrip }: AddTripProps) {
   const [budget, setBudget] = useState("");
   const [image, setImage] = useState("");
 
+  const clearInputs = () => {
+    setTitle("");
+    setDestination("");
+    setBudget("");
+    setImage("");
+  };
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const newTrip = {
@@ -31,10 +38,7 @@ function AddTrip({ addTrip }: AddTripProps) {
       status: TripStatus.PLANNING,
     };
     addTrip(newTrip);
-    setTitle("");
-    setDestination("");
-    setBudget("");
-    setImage("");
+    clearInputs();
   };
 
   return (
