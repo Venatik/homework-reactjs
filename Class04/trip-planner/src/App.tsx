@@ -8,6 +8,7 @@ import { Contact } from "./components/Contact/Contact";
 import { useState } from "react";
 import { Trip, trips } from "./trip.data";
 import AddTrip from "./components/AddTrip/AddTrip";
+import { ThemeProvider } from "./context/theme.context";
 
 function App() {
   const [plannedTrips, setPlannedTrips] = useState<Trip[]>(trips);
@@ -23,32 +24,37 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <Header />
+    <ThemeProvider>
+      <BrowserRouter>
+        <Header />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        <Route
-          path="trips"
-          element={
-            <Trips
-              plannedTrips={plannedTrips}
-              handleRemoveTrip={handleRemoveTrip}
-            />
-          }
-        />
+          <Route
+            path="trips"
+            element={
+              <Trips
+                plannedTrips={plannedTrips}
+                handleRemoveTrip={handleRemoveTrip}
+              />
+            }
+          />
 
-        <Route
-          path="trips/:id"
-          element={<TripDetails trips={plannedTrips} />}
-        />
+          <Route
+            path="trips/:id"
+            element={<TripDetails trips={plannedTrips} />}
+          />
 
-        <Route path="contact" element={<Contact />} />
+          <Route path="contact" element={<Contact />} />
 
-        <Route path="add-trip" element={<AddTrip addTrip={handleAddTrip} />} />
-      </Routes>
-    </BrowserRouter>
+          <Route
+            path="add-trip"
+            element={<AddTrip addTrip={handleAddTrip} />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

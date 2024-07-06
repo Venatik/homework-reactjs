@@ -1,8 +1,13 @@
 import { NavLink } from "react-router-dom";
-
 import "./Header.css";
+import { useTheme } from "../../context/theme.context";
 
 export const Header = () => {
+  const { theme, toggleTheme } = useTheme() as {
+    theme: string;
+    toggleTheme: () => void;
+  };
+
   return (
     <header className="heading">
       <h2>LOGO</h2>
@@ -25,6 +30,9 @@ export const Header = () => {
           </NavLink>
         </ul>
       </nav>
+      <button className="themeToggle" onClick={toggleTheme}>
+        {theme === "LIGHT" ? "🌙" : "☀️"}
+      </button>
     </header>
   );
 };
