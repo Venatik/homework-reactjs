@@ -1,9 +1,13 @@
 .heading {
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   align-items: center;
   border-bottom: 2px solid #f4f4f4;
   margin-bottom: 50px;
+}
+
+.heading h2 {
+  margin-right: auto;
 }
 
 .navLinks {

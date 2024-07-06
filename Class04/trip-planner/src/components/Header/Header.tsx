@@ -11,6 +11,9 @@ export const Header = () => {
   return (
     <header className="heading">
       <h2>LOGO</h2>
+      <button className="themeToggle" onClick={toggleTheme}>
+        {theme === "LIGHT" ? "🌙" : "☀️"}
+      </button>
       <nav>
         <ul className="navLinks">
           <NavLink to="/">
@@ -30,9 +33,6 @@ export const Header = () => {
           </NavLink>
         </ul>
       </nav>
-      <button className="themeToggle" onClick={toggleTheme}>
-        {theme === "LIGHT" ? "🌙" : "☀️"}
-      </button>
     </header>
   );
 };
