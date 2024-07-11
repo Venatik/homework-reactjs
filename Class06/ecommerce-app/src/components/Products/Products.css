@@ -1,0 +1,23 @@
+.productsContainer {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  width: 30%;
+}
+
+.product img {
+  margin-top: 20px;
+}
+
+.product h3 {
+  margin: 0 15px;
+  margin-top: 15px;
+}
