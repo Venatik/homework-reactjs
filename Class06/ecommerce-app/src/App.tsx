@@ -8,7 +8,7 @@ import { DraftProduct } from "./components/AddProduct/AddProduct";
 import { Product } from "./components/Products/Products";
 
 function App() {
-  const [products, setProducts] = useState<DraftProduct[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   // const addProducts = (newProduct: Product) => {
   //   setProducts([...products, { ...newProduct, id: Math.random() }]);
@@ -22,7 +22,12 @@ function App() {
         <Routes>
           <Route path="/" element={<h2>Home</h2>} />
           <Route path="/products" element={<Products />} />
-          <Route path="add-product" element={<AddProduct />} />
+          <Route
+            path="add-product"
+            element={
+              <AddProduct onProductAdd={(product: DraftProduct) => {}} />
+            }
+          />
         </Routes>
       </Container>
     </BrowserRouter>

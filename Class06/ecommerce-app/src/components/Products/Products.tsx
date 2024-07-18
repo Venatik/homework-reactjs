@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Products.css";
+import { AddProduct, DraftProduct } from "../AddProduct/AddProduct";
 
 export interface Product {
   id: number;
@@ -8,10 +9,6 @@ export interface Product {
   description: string;
   category: string;
   image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
 }
 
 export const Products = () => {
@@ -26,6 +23,17 @@ export const Products = () => {
 
     fetchProducts();
   }, []);
+
+  const handleAddProduct = (product: DraftProduct) => {
+    const newProductId =
+      products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
+    const newProduct: Product = {
+      ...product,
+      id: newProductId,
+      image: "",
+    };
+    setProducts(prevProducts => [...prevProducts, newProduct]);
+  };
 
   return (
     <section>

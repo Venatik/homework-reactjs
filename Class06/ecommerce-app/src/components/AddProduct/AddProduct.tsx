@@ -9,12 +9,17 @@ enum Category {
 }
 
 export type DraftProduct = {
+  id: number;
   title: string;
   price: number;
   description: string;
   imageUrl: string;
   category: Category;
 };
+
+interface AddProductProps {
+  onProductAdd: (product: DraftProduct) => void;
+}
 
 // interface ProductCreationProps {
 //   title: string;
@@ -24,8 +29,9 @@ export type DraftProduct = {
 //   category: Category;
 // }
 
-export const AddProduct = () => {
+export const AddProduct: React.FC<AddProductProps> = ({ onProductAdd }) => {
   const [draftProduct, setDraftProduct] = useState<DraftProduct>({
+    id: 0,
     title: "",
     price: 0,
     description: "",
@@ -33,7 +39,14 @@ export const AddProduct = () => {
     category: Category.ELECTRONICS,
   });
 
-  const [products, setProducts] = useState<DraftProduct[]>([]);
+  // const handleChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  // ) => {
+  //   const { name, value } = e.target;
+  //   setDraftProduct(prev => ({ ...prev, [name]: value }));
+  // };
+
+  // const [products, setProducts] = useState<DraftProduct[]>([]);
 
   const handleChangeInput = <K extends keyof DraftProduct>(
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -47,23 +60,16 @@ export const AddProduct = () => {
     });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (
-      !draftProduct.title ||
-      draftProduct.price <= 0 ||
-      !draftProduct.description ||
-      !draftProduct.imageUrl
-    ) {
-      alert("Please fill all the fields correctly.");
-      return;
-    }
-    setProducts([...products, draftProduct]);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onProductAdd(draftProduct);
+    console.log(draftProduct);
     resetForm();
   };
 
   const resetForm = () => {
     setDraftProduct({
+      id: 0,
       title: "",
       price: 0,
       description: "",
@@ -85,7 +91,7 @@ export const AddProduct = () => {
 
         <input
           id="price"
-          type="text"
+          type="number"
           placeholder="Price"
           value={draftProduct.price}
           onChange={e => handleChangeInput(e, "price")}
