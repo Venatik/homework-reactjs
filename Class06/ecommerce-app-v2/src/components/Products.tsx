@@ -1,15 +1,6 @@
 import "./Products.css";
 import { useProducts } from "../context/product.context";
 
-export interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-}
-
 export const Products = () => {
   const { products } = useProducts();
 

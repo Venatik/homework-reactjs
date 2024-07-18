@@ -31,13 +31,9 @@ export const AddProduct = () => {
           ))}
         </select>
         <input {...register("image")} placeholder="Image URL" />
+        <input type="text" {...register("rating.rate")} placeholder="Rating" />
         <input
-          type="number"
-          {...register("rating.rate")}
-          placeholder="Rating"
-        />
-        <input
-          type="number"
+          type="text"
           {...register("rating.count")}
           placeholder="Rating Count"
         />
