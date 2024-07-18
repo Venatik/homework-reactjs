@@ -3,11 +3,6 @@ import { NavLink, Link } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 
 export const Header = () => {
-  // const navLink = ({ isActive }: { isActive: boolean }) =>
-  //   isActive
-  //     ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-  //     : "text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium";
-
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     isActive
       ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
